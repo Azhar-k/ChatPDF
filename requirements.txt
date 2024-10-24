@@ -1,0 +1,11 @@
+requests
+python-dotenv
+langchain
+streamlit
+PyPDF2
+chromadb
+faiss-cpu
+google-generativeai
+langchain_google_genai
+langchain-community
+langchain-google-genai
