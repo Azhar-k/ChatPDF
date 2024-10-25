@@ -14,6 +14,8 @@ logging.basicConfig(level=logging.INFO)
 
 def main():
     st.title("PDF Question & Answer Bot")
+    google_api_key = st.secrets["general"]["GOOGLE_API_KEY"]
+    os.environ["GOOGLE_API_KEY"] = google_api_key
     
     with st.sidebar:
         sidebar_content()
