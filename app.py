@@ -13,7 +13,7 @@ load_dotenv()
 logging.basicConfig(level=logging.INFO)
 
 def main():
-    st.title("PDF Question & Answer Bot")
+    st.title("ChatPDF")  # Changed the title here
     
     with st.sidebar:
         sidebar_content()

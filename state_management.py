@@ -25,6 +25,8 @@ def initialize_app_state():
         st.session_state.current_question = ""
     if 'question_count' not in st.session_state:
         st.session_state.question_count = 0
+    if 'chat_history' not in st.session_state:
+        st.session_state.chat_history = []  # Initialize chat history
 
 def clear_app_state():
     if os.path.exists("faiss_index"):
@@ -40,3 +42,4 @@ def clear_app_state():
     st.session_state.uploader_disabled = False
     st.session_state.current_question = ""
     st.session_state.question_count = 0
+    st.session_state.chat_history = []  # Clear the chat history
