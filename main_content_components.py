@@ -26,20 +26,37 @@ def handle_user_question():
 
         st.session_state.user_question = user_question
         st.session_state.answer = response["output_text"]
-        
+
+        # Append to chat history
+        st.session_state.chat_history.append({"question": user_question, "answer": st.session_state.answer})
+
         # Increment the question count to generate a new key for the next input
         st.session_state.question_count = st.session_state.get('question_count', 0) + 1
         
         # Rerun the app to display the answer and clear the input
         st.rerun()
 
-def display_answer():
-    if st.session_state.user_question and st.session_state.answer:
-        st.write("Your question:", st.session_state.user_question)
-        st.write("Answer:", st.session_state.answer)
+def display_chat_history():
+    """Display the chat history with user questions and AI answers in a scrollable section."""
+    if st.session_state.chat_history:
+        for chat in reversed(st.session_state.chat_history):  # Reverse the order
+            col1, col2 = st.columns([2, 1])  # Adjust the ratio as needed
+            
+            with col1:
+                st.write("") 
+                st.write("") 
+                st.write("") 
+                st.write("") 
+                st.write(f"**ChatPDF:** {chat['answer']}")  # AI's answer on the left
+            
+            with col2:
+                st.write(f"**You:** {chat['question']}")  # User's question on the right
+            
+        
+
 
 def main_content():
     if st.session_state.file_processed:
         display_file_info()
         handle_user_question()
-        display_answer()
+        display_chat_history()  # Call the updated display_chat_history function

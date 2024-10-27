@@ -13,7 +13,7 @@ load_dotenv()
 logging.basicConfig(level=logging.INFO)
 
 def main():
-    st.title("PDF Question & Answer Bot")
+    st.title("ChatPDF")
     google_api_key = st.secrets["general"]["GOOGLE_API_KEY"]
     os.environ["GOOGLE_API_KEY"] = google_api_key
     
